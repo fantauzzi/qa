@@ -1,0 +1,33 @@
+Langchain
+https://python.langchain.com/en/latest/use_cases/question_answering.html
+
+
+
+Sophia Yang
+https://github.com/sophiamyang/tutorials-LangChain/blob/main/LangChain_QA.ipynb
+Interesting explanation of how to reduce text chunks until they fit the input to the generative model
+
+https://youtu.be/DXmiJKrQIvg
+Based on OpenAI
+PyPDFLoader
+pypdf
+PyPDF2
+
+James Briggs
+https://docs.pinecone.io/docs/abstractive-question-answering
+Pinecone, BART
+retriever is a SentenceTransformer trained on flax-sentence-embedding/all_datasets_v3_mpnet-base ; it is used to convert
+the corpus of text into embeddings to be stored in the Pinecone database
+
+Generator ELI5 BART
+
+Also available for langchain + GPT-3.5
+https://www.pinecone.io/learn/langchain-retrieval-augmentation/
+
+NLP textbook, p. 205
+Adopts a RAGenerator model from Haystack, that has been fine tuned end-to-end on the NQ dataset.
+Haystack in that example. uses elastic search for document storate/retrieval
+
+
+Try Falcon?
+
