@@ -5,6 +5,10 @@ from time import sleep
 import feedparser
 import pandas as pd
 
+# cat files.txt | xargs -n 1 -P 8 wget -q
+# http://export.arxiv.org/pdf/2306.13092v1 => then rename as .pdf
+
+
 logging.basicConfig(level=logging.INFO, format="%(asctime)-15s %(message)s")
 _logger = logging.getLogger()
 info = _logger.info
