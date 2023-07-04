@@ -5,7 +5,7 @@ from urllib import request
 from tqdm import tqdm
 
 interval = 1  # Minimum interval requested between subsequent downloads, in seconds
-urls_file = "../dataset/files2.txt"  # Path to the text file containing URLs for download
+urls_file = "../dataset/files.txt"  # Path to the text file containing URLs for download
 local_download_path = '/home/fanta/Downloads/arxiv'  # Destination dir for downloaded files
 
 with open(urls_file, 'r') as f:
