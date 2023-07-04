@@ -17,7 +17,10 @@ for url in tqdm(urls):
     if local_file.exists():
         continue
     last_request = time()
-    request.urlretrieve(url, str(local_file))
+    try:
+        request.urlretrieve(url, str(local_file))
+    except Exception as ex:
+        print(f'Got exception while trying to download {url}: {ex}')
     time_since_last = time() - last_request
     if time_since_last < interval:
         sleep(interval - time_since_last)
