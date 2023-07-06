@@ -1,13 +1,13 @@
 import hashlib
-from pprint import pprint
 from pathlib import Path
+from pprint import pprint
 
 import pinecone
 import torch
-# from langchain.document_loaders import PyPDFLoader
-from pypdf import PdfReader
 # from langchain.text_splitter import SpacyTextSplitter
 from langchain.text_splitter import RecursiveCharacterTextSplitter
+# from langchain.document_loaders import PyPDFLoader
+from pypdf import PdfReader
 from sentence_transformers import SentenceTransformer
 from tqdm.auto import tqdm
 
@@ -132,15 +132,6 @@ def format_query(query, context):
     return query
 
 
-extraction_query = "What is SuperGLUE?"
-extraction_result = query_pinecone(extraction_query, top_k=1)
-print(extraction_result)
-
-# format the query in the form generator expects the input
-generative_query = format_query(extraction_query, extraction_result["matches"])
-pprint(generative_query)
-
-
 def generate_answer(query):
     # tokenize the query to get input_ids
     # For max_length see https://huggingface.co/docs/transformers/v4.30.0/en/main_classes/tokenizer#transformers.PreTrainedTokenizer.__call__
@@ -151,6 +142,47 @@ def generate_answer(query):
     # use tokenizer to decode the output ids
     answer = tokenizer.batch_decode(ids, skip_special_tokens=True, clean_up_tokenization_spaces=False)[0]
     return answer
+
+
+
+extraction_query = "What is SuperGLUE?"
+extraction_result = query_pinecone(extraction_query, top_k=1)
+# print(extraction_result)
+
+# format the query in the form generator expects the input
+generative_query = format_query(extraction_query, extraction_result["matches"])
+pprint(generative_query)
+
+answer = generate_answer(generative_query)
+print('==========================')
+pprint(answer)
+
+
+print('##############################')
+
+extraction_query = "Who has produced the most important machine learning models? The academia or the industry?"
+extraction_result = query_pinecone(extraction_query, top_k=1)
+# print(extraction_result)
+
+# format the query in the form generator expects the input
+generative_query = format_query(extraction_query, extraction_result["matches"])
+pprint(generative_query)
+
+answer = generate_answer(generative_query)
+print('==========================')
+pprint(answer)
+
+
+print('##############################')
+
+extraction_query = "How many organizations have adopted AI according to the McKinsey report?"
+extraction_result = query_pinecone(extraction_query, top_k=1)
+# print(extraction_result)
+
+# format the query in the form generator expects the input
+generative_query = format_query(extraction_query, extraction_result["matches"])
+pprint(generative_query)
+
 
 
 answer = generate_answer(generative_query)

@@ -61,8 +61,9 @@ while True:
         # The query returned at least one entry, but the results aren't complete, so keep on querying
         info(f'Query at position {current_position} completed')
         current_position += len(entries_in_page)
+        sleep(1)
     else:  # If the query didn't retrieve anything, pause and then try again the same query
-        sleep(3)
+        sleep(4)
 
 info(f'Fetched {len(entries_as_list)} entries overall')
 entries = pd.DataFrame(entries_as_list)
